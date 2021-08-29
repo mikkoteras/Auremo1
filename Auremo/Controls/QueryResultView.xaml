@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="Auremo.Controls.QueryResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:m="clr-namespace:Auremo.DataModel"
+             xmlns:o="clr-namespace:Auremo.DataModel.AudioObjects"
+             xmlns:u="clr-namespace:Auremo.Controls.Utility"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="768"
+             d:DataContext="{d:DesignInstance m:DesignTimeWorld, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <m:LanguageTranslationConverter x:Key="Translate"/>
+        <u:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox Style="{StaticResource ItemListStyle}"
+                 Grid.Row="0"
+                 Name="m_QueryResult"
+                 ItemsSource="{Binding Path=QueryResult.SearchResult}"
+                 HorizontalContentAlignment="Stretch"
+                 KeyDown="OnKeyDown">
+            <ListBox.Resources>
+                <!-- Search/browse results by item type. -->
+                <DataTemplate DataType="{x:Type o:Artist}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource LinkElementStyle}" Content="{Binding Path=Name}" Grid.Column="0" Click="OnArtistClicked"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="1" Click="OnPlayItemClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="2" Click="OnAddItemClicked">
+                            <Path Style="{StaticResource AddItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type o:Genre}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource LinkElementStyle}" Content="{Binding Path=Name}" Grid.Column="0" Click="OnGenreClicked"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="1" Click="OnPlayItemClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="2" Click="OnAddItemClicked">
+                            <Path Style="{StaticResource AddItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type o:Track}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource TextElementStyle}" Grid.Column="0" Margin="1,0" Text="{Binding Path=TitleOrFile}"/>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="1" Content="{Binding Path=Artist}" Click="OnArtistClicked"/>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="2" Content="{Binding Path=Album}" Click="OnAlbumClicked"/>
+                        <TextBlock Style="{StaticResource TextElementStyle}" Grid.Column="3" TextAlignment="Left" Foreground="{StaticResource TextBrush.Disabled}" Text="{Binding Path=Date}"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="4" Click="OnPlayItemClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="5" Click="OnAddItemClicked">
+                            <Path Style="{StaticResource AddItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type o:Directory}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="0" Margin="1,0" Content="{Binding Path=Name}" Click="OnDirectoryClicked"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="1" Click="OnPlayItemClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="2" Click="OnAddItemClicked">
+                            <Path Style="{StaticResource AddItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type o:Playlist}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="0" Margin="1,0" Content="{Binding Path=File}" Click="OnPlaylistClicked"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="1" Click="OnPlayItemClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="2" Click="OnAddItemClicked">
+                            <Path Style="{StaticResource AddItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='query-result-view.add-to-playlist-button'}"
+                    Click="OnAddSelectionToPlaylistClicked">
+                <Button.ContextMenu>
+                    <ContextMenu ItemsSource="{Binding Path=PlaylistInfo.AllPlaylists}"/>
+                </Button.ContextMenu>
+            </Button>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='query-result-view.play-button'}"
+                    Click="OnPlaySelectionClicked"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='query-result-view.add-button'}"
+                    Click="OnAddSelectionClicked"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

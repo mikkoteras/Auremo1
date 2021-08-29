@@ -1,0 +1,82 @@
+{
+  "Translations": [
+    {
+      "Id": "language-name",
+      "Description": "The name of the target language, in the language itself",
+      "InEnglish": "Backwards English",
+      "Translation": "Hsilgne Sdrawkcab"
+    },
+    {
+      "Id": "example.preface",
+      "Description": "Here come a few examples. Don't bother translating these.",
+      "InEnglish": "You can actually remove all the examples from this file, because",
+      "Translation": "Auremo ignores Translations where id = example.etc..."
+    },
+    {
+      "Id": "example.quoting",
+      "Description": "Each literal double-quote has to be prefixed with a backslash.",
+      "InEnglish": "Server says, \"Hello\"",
+      "Translation": "\"Olleh\", syas revres"
+    },
+    {
+      "Id": "example.formats.simple",
+      "Description": "The Translation must sometimes contain flags. You can reorder them if necessary.",
+      "InEnglish": "Your collection contains {0} artists and {1} albums.",
+      "Translation": "Smubla {1} dna stsitra {0} sniatnoc noitcelloc rouy."
+    },
+    {
+      "Id": "nav-panel.browse",
+      "Description": "Link heading: browse music collection",
+      "InEnglish": "Browse",
+      "Translation": "Esworb"
+    },
+    {
+      "Id": "nav-panel.files",
+      "Description": "Link: browse filesystem",
+      "InEnglish": "Files",
+      "Translation": "Selif"
+    },
+    {
+      "Id": "nav-panel.artists",
+      "Description": "Link: Browse artists",
+      "InEnglish": "Artists",
+      "Translation": "Stsitra"
+    },
+    {
+      "Id": "nav-panel.genres",
+      "Description": "Link: Browse music genres",
+      "InEnglish": "Genres",
+      "Translation": "Serneg"
+    },
+    {
+      "Id": "nav-panel.playlists",
+      "Description": "Link: Browse user-created playlists",
+      "InEnglish": "Playlists",
+      "Translation": "Stsilyalp"
+    },
+    {
+      "Id": "nav-panel.play-queue",
+      "Description": "Link: see current play queue",
+      "InEnglish": "Play Queue",
+      "Translation": "Eueuq Yalp"
+    },
+    {
+      "Id": "nav-panel.server",
+      "Description": "Link: server controls view",
+      "InEnglish": "Server",
+      "Translation": "Revres"
+    },
+    {
+      "Id": "nav-panel.configuration",
+      "Description": "Link: see application settings",
+      "InEnglish": "Configuration",
+      "Translation": "Noitarugifnoc"
+    },
+    {
+      "Id": "nav-panel.developer",
+      "Description": "Link: see extra functions for developers",
+      "InEnglish": "Developer",
+      "Translation": "Repoleved"
+    }
+  ]
+}

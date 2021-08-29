@@ -1,0 +1,94 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ButtonGlyphStyle" TargetType="{x:Type Path}">
+        <Setter Property="StrokeThickness" Value="0"/>
+        <Setter Property="Stroke" Value="Transparent"/>
+        <Setter Property="Fill">
+            <Setter.Value>
+                <Binding RelativeSource="{RelativeSource AncestorType=Button}" Path="Foreground"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PlayGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 5,0 18,8 5,16"/>
+    </Style>
+    <Style x:Key="PauseGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 0,0 4,0 4,11 0,11 M 6,0 10,0 10,11 6,11"/>
+    </Style>
+    <Style x:Key="StopGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 0,0 11,0 11,11 0,11"/>
+    </Style>
+    <Style x:Key="SkipGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 0,0 5,4 5,0 10,4 10,0 12,0 12,10 10,10 10,6 5,10 5,6 0,10"/>
+    </Style>
+    <Style x:Key="BackGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 0,0 2,0 2,4 7,0 7,4 12,0 12,10 7,6 7,10 2,6 2,10 0,10"/>
+    </Style>
+    <Style x:Key="StartPageGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 24,0 48,24 40,24 40,48 29,48 29,31 19,31 19,48 8,48 8,24 0,24"/>
+    </Style>
+    <Style x:Key="PageBackGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 0,24 24,0 24,15 48,15 48,33 24,33 24,48"/>
+    </Style>
+    <Style x:Key="PageForwardGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 48,24 24,48 24,33 0,33 0,15 24,15 24,0"/>
+    </Style>
+    <Style x:Key="SearchGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <!-- Aaaaand this is why we need a style file for glyphs. -->
+        <Setter Property="Data">
+            <Setter.Value>
+                <CombinedGeometry>
+                    <CombinedGeometry.Geometry1>
+                        <CombinedGeometry GeometryCombineMode="Xor">
+                            <CombinedGeometry.Geometry1>
+                                <EllipseGeometry RadiusX="35" RadiusY="35" Center="60,38"/>
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Center="60,38"/>
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <PathFigureCollection>
+                                    <PathFigure IsClosed="True" StartPoint="35,53">
+                                        <PathFigure.Segments>
+                                            <PathSegmentCollection>
+                                                <LineSegment Point="45,63"/>
+                                                <LineSegment Point="15,93"/>
+                                                <LineSegment Point="5,83"/>
+                                            </PathSegmentCollection>
+                                        </PathFigure.Segments>
+                                    </PathFigure>
+                                </PathFigureCollection>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PlayItemGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 1,0 8,5 1,10"/>
+    </Style>
+    <Style x:Key="AddItemGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 0,3 3,3 3,0 5,0 5,3 8,3 8,5 5,5 5,8 3,8 3,5 0,5"/>
+    </Style>
+    <Style x:Key="RemoveItemGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Data" Value="M 3,0 10,7 17,0 20,3 13,10 20,17 17,20 10,13 3,20 0,17 7,10 0,3"/>
+    </Style>
+    <Style x:Key="MenuGlyph" TargetType="{x:Type Path}" BasedOn="{StaticResource ButtonGlyphStyle}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Data">
+            <Setter.Value>
+                <GeometryGroup>
+                    <EllipseGeometry Center="50,15" RadiusX="10" RadiusY="10"/>
+                    <EllipseGeometry Center="50,50" RadiusX="10" RadiusY="10"/>
+                    <EllipseGeometry Center="50,85" RadiusX="10" RadiusY="10"/>
+                </GeometryGroup>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

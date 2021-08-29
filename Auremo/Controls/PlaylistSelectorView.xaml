@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Auremo.Controls.PlaylistSelectorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:m="clr-namespace:Auremo.DataModel"
+             xmlns:o="clr-namespace:Auremo.DataModel.AudioObjects"
+             xmlns:u="clr-namespace:Auremo.Controls.Utility"
+             mc:Ignorable="d"
+             d:DesignHeight="320" d:DesignWidth="768"
+             d:DataContext="{d:DesignInstance m:DesignTimeWorld, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <m:LanguageTranslationConverter x:Key="Translate"/>
+        <u:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox Style="{StaticResource ItemListStyle}"
+                 Name="m_Items"
+                 Grid.Row="0"
+                 ItemsSource="{Binding Path=PlaylistInfo.AllPlaylists}"
+                 SelectionMode="Single"
+                 HorizontalContentAlignment="Stretch">
+            <ListBox.Resources>
+                <DataTemplate DataType="{x:Type o:Playlist}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="0" Margin="1,0"
+                                Content="{Binding Path=File}" Click="OnPlaylistClicked"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="1"
+                                Click="OnLoadPlaylistClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.save-queue-button'}"
+                    Click="OnSaveQueueAsClicked"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.rename-playlist-button'}"
+                    Click="OnRenamePlaylistClicked"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.delete-playlist-button'}"
+                    Click="OnRemovePlaylistClicked"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.load-selected-playlist-button'}"
+                    Click="OnLoadSelectedPlaylistClicked"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

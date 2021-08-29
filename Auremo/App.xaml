@@ -1,0 +1,19 @@
+﻿<Application x:Class="Auremo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Controls/Style/Colors.xaml"/>
+                <ResourceDictionary Source="Controls/Style/Glyphs.xaml"/>
+                <ResourceDictionary Source="Controls/Style/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="Controls/Style/ListBoxStyles.xaml"/>
+                <ResourceDictionary Source="Controls/Style/ListBoxElementStyles.xaml"/>
+                <ResourceDictionary Source="Controls/Style/SeekBarStyle.xaml"/>
+                <ResourceDictionary Source="Controls/Style/SliderStyles.xaml"/>
+                <ResourceDictionary Source="Controls/Style/WidgetStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

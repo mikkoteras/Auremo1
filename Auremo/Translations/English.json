@@ -1,0 +1,190 @@
+{
+  "Translations": [
+    {
+      "Id": "language-name",
+      "Description": "The name of the target language, in the language itself",
+      "InEnglish": "English",
+      "Translation": "English"
+    },
+    {
+      "Id": "nav-panel.activity",
+      "Description": "Link heading: view cover and activity view",
+      "InEnglish": "Activity",
+      "Translation": "Activity"
+    },
+    {
+      "Id": "nav-panel.browse",
+      "Description": "Link heading: browse music collection",
+      "InEnglish": "Browse",
+      "Translation": "Browse"
+    },
+    {
+      "Id": "nav-panel.files",
+      "Description": "Link: browse filesystem",
+      "InEnglish": "Files",
+      "Translation": "Files"
+    },
+    {
+      "Id": "nav-panel.artists",
+      "Description": "Link: Browse artists",
+      "InEnglish": "Artists",
+      "Translation": "Artists"
+    },
+    {
+      "Id": "nav-panel.genres",
+      "Description": "Link: Browse music genres",
+      "InEnglish": "Genres",
+      "Translation": "Genres"
+    },
+    {
+      "Id": "nav-panel.playlists",
+      "Description": "Link: Browse user-created playlists",
+      "InEnglish": "Playlists",
+      "Translation": "Playlists"
+    },
+    {
+      "Id": "nav-panel.play-queue",
+      "Description": "Link: see current play queue",
+      "InEnglish": "Play Queue",
+      "Translation": "Play Queue"
+    },
+    {
+      "Id": "nav-panel.server",
+      "Description": "Link: server controls view",
+      "InEnglish": "Server",
+      "Translation": "Server"
+    },
+    {
+      "Id": "nav-panel.configuration",
+      "Description": "Link: see application settings",
+      "InEnglish": "Configuration",
+      "Translation": "Configuration"
+    },
+    {
+      "Id": "nav-panel.developer",
+      "Description": "Link: see extra functions for developers",
+      "InEnglish": "Developer",
+      "Translation": "Developer"
+    },
+    {
+      "Id": "query-result-view.add-to-playlist-button",
+      "Description": "Button: add selected items in the search results to a playlist",
+      "InEnglish": "Add to Playlist",
+      "Translation": "Add to Playlist"
+    },
+    {
+      "Id": "query-result-view.play-button",
+      "Description": "Button: play selected items in the search results list by overwriting the play queue with them",
+      "InEnglish": "Play selection",
+      "Translation": "Play selection"
+    },
+    {
+      "Id": "query-result-view.add-button",
+      "Description": "Button: add selected items in the search results list to the play queue",
+      "InEnglish": "Add to Queue",
+      "Translation": "Add to Queue"
+    },
+    {
+      "Id": "playlist-views.save-queue-button",
+      "Description": "Button: prompt the user for a name, then save the current play queue as a new playlist with that name",
+      "InEnglish": "Save Play Queue As...",
+      "Translation": "Save Play Queue As..."
+    },
+    {
+      "Id": "playlist-views.rename-playlist-button",
+      "Description": "Button: prompt the user for a name, then save the selected playlist to that name",
+      "InEnglish": "Rename Playlist...",
+      "Translation": "Rename Playlist..."
+    },
+    {
+      "Id": "playlist-views.delete-playlist-button",
+      "Description": "Button: delete the selected playlist from the server",
+      "InEnglish": "Delete Playlist",
+      "Translation": "Delete Playlist"
+    },
+    {
+      "Id": "playlist-views.load-selected-playlist-button",
+      "Description": "Button: load the selected playlist into the play queue",
+      "InEnglish": "Load Playlist",
+      "Translation": "Load Playlist"
+    },
+    {
+      "Id": "playlist-views.clear-playlist-button",
+      "Description": "Button: clear the currently visible playlist",
+      "InEnglish": "Clear Playlist",
+      "Translation": "Clear Playlist"
+    },
+    {
+      "Id": "playlist-views.add-url-to-playlist-button",
+      "Description": "Button: prompt the user for an URL and add it to the end of the current playlist",
+      "InEnglish": "Add to Playlist...",
+      "Translation": "Add to Playlist..."
+    },
+    {
+      "Id": "playlist-views.delete-items-button",
+      "Description": "Button: delete selected items from current playlist",
+      "InEnglish": "Delete Selection",
+      "Translation": "Delete Selection"
+    },
+    {
+      "Id": "playlist-views.load-current-playlist-button",
+      "Description": "Button: load the displayed playlist into the play queue",
+      "InEnglish": "Load Playlist",
+      "Translation": "Load Playlist"
+    },
+    {
+      "Id": "play-queue-view.clear-button",
+      "Description": "Button: clear the current play queue",
+      "InEnglish": "Clear Play Queue",
+      "Translation": "Clear Play Queue"
+    },
+    {
+      "Id": "play-queue-view.add-url-button",
+      "Description": "Button: add arbitrart URL to the play queue",
+      "InEnglish": "Add URL to Queue",
+      "Translation": "Add URL to Queue"
+    },
+    {
+      "Id": "play-queue-view.shuffle-button",
+      "Description": "Button: shuffle the contents of the play queue (not the same as random mode!)",
+      "InEnglish": "Shuffle Play Queue",
+      "Translation": "Shuffle Play Queue"
+    },
+    {
+      "Id": "play-queue-view.save-as-playlist-button",
+      "Description": "Button: ask the user for a name, then save the current play queue as a new playlist with that name",
+      "InEnglish": "Save Queue As Playlist...",
+      "Translation": "Save Queue As Playlist..."
+    },
+    {
+      "Id": "playback-panel.random",
+      "Description": "Button: toggle random play mode",
+      "InEnglish": "Random",
+      "Translation": "Random"
+    },
+    {
+      "Id": "playback-panel.repeat",
+      "Description": "Button: toggle repeat play mode",
+      "InEnglish": "Repeat",
+      "Translation": "Repeat"
+    },
+    {
+      "Id": "playback-panel.single",
+      "Description": "Button: toggle single play mode (play only current track, possibly repeating)",
+      "InEnglish": "Single",
+      "Translation": "Single"
+    },
+    {
+      "Id": "playback-panel.oneshot",
+      "Description": "Button: toggle oneshot play mode (the spec doesn't really explain what this is, but it's alternative single mode of some kind)",
+      "InEnglish": "Oneshot",
+      "Translation": "Oneshot"
+    },
+    {
+      "Id": "playback-panel.consume",
+      "Description": "Button: toggle consume mode (tracks are removed from the play queue after they've been played)",
+      "InEnglish": "Consume",
+      "Translation": "Consume"
+    }
+  ]
+}

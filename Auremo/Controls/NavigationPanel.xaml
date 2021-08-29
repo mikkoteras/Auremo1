@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Auremo.Controls.NavigationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:m="clr-namespace:Auremo.DataModel"
+             xmlns:t="clr-namespace:Auremo.DataModel.Types"
+             xmlns:u="clr-namespace:Auremo.Controls.Utility"
+             xmlns:w="clr-namespace:Auremo.Controls.CustomWidgets"
+             Height="360" Width="120"
+             VerticalAlignment="Top"
+             d:DataContext="{d:DesignInstance m:DesignTimeWorld, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <u:ViewModeEqualsConverter x:Key="ViewModeEqualsConverter"/>
+        <m:LanguageTranslationConverter x:Key="Translate"/>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type w:StatefulButton}" BasedOn="{StaticResource NavigationButtonStyle}"/>
+            </StackPanel.Resources>
+            <w:StatefulButton Margin="10,0,0,0" Click="OnActivityClick"
+                              IsPushed="{Binding Path=InterfaceState.ViewModeIsActivity}"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.activity'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="10,10,0,0" Click="OnBrowseClick"
+                              IsPushed="False"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.browse'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="30,10,0,0" Click="OnFilesClick" IsPushed="False"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.files'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="30,10,0,0" Click="OnArtistsClick" IsPushed="False"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.artists'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="30,10,0,0" Click="OnGenresClick" IsPushed="False"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.genres'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="30,10,0,0" Click="OnPlaylistsClick"
+                              IsPushed="{Binding Path=InterfaceState.ViewModeIsPlaylistSelectorOrContents}"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.playlists'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="10,25,0,0" Click="OnPlayQueueClick"
+                              IsPushed="{Binding Path=InterfaceState.ViewMode, Converter={StaticResource ViewModeEqualsConverter}, ConverterParameter={x:Static t:ViewMode.PlayQueue}}"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.play-queue'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="10,25,0,0" Click="OnServerClick"
+                              IsPushed="{Binding Path=InterfaceState.ViewMode, Converter={StaticResource ViewModeEqualsConverter}, ConverterParameter={x:Static t:ViewMode.Server}}"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.server'}"
+                              IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+            <w:StatefulButton Margin="10,25,0,0" Click="OnConfigurationClick"
+                              IsPushed="{Binding Path=InterfaceState.ViewMode, Converter={StaticResource ViewModeEqualsConverter}, ConverterParameter={x:Static t:ViewMode.Configuration}}"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.configuration'}"/>
+            <w:StatefulButton Margin="10,25,0,0" Click="OnDeverloperClick"
+                              IsPushed="{Binding Path=InterfaceState.ViewMode, Converter={StaticResource ViewModeEqualsConverter}, ConverterParameter={x:Static t:ViewMode.Developer}}"
+                              Content="{Binding Converter={StaticResource Translate}, ConverterParameter='nav-panel.developer'}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Auremo.Controls.SearchPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:m="clr-namespace:Auremo.DataModel"
+             mc:Ignorable="d" 
+             Height="60" MinWidth="390"
+             d:DataContext="{d:DesignInstance m:DesignTimeWorld, IsDesignTimeCreatable=True}">
+    <StackPanel Orientation="Horizontal">
+        <Button Width="30" Height="30" Margin="3" Click="GoToStart">
+            <Viewbox Width="20" Height="20">
+                <Path Style="{StaticResource StartPageGlyph}"/>
+            </Viewbox>
+        </Button>
+        <Button Width="30" Height="30" Margin="3" IsEnabled="{Binding Path=ViewHistory.CanGoBack}" Click="GoBack">
+            <Viewbox Width="20" Height="20">
+                <Path Style="{StaticResource PageBackGlyph}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Viewbox>
+        </Button>
+        <Button Width="30" Height="30" Margin="3" IsEnabled="{Binding Path=ViewHistory.CanGoForward}" Click="GoForward">
+            <Viewbox Width="20" Height="20">
+                <Path Style="{StaticResource PageForwardGlyph}"/>
+            </Viewbox>
+        </Button>
+        <TextBox Width="240" Height="30" HorizontalAlignment="Stretch" Margin="5,5,-1,5"
+                 Text="{Binding Path=InterfaceState.SearchString, UpdateSourceTrigger=PropertyChanged}"
+                 IsEnabled="{Binding Path=ServerStatus.IsConnected}"/>
+        <Button Grid.Row="1" Margin="-1,5,5,5" Width="30" Height="30" Click="OnSearchClick"
+                IsEnabled="{Binding Path=ServerStatus.IsConnected}">
+            <Viewbox Width="20" Height="20">
+                <Path Style="{StaticResource SearchGlyph}"/>
+            </Viewbox>
+        </Button>
+    </StackPanel>
+</UserControl>

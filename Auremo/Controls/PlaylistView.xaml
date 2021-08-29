@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="Auremo.Controls.PlaylistView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:m="clr-namespace:Auremo.DataModel"
+             xmlns:o="clr-namespace:Auremo.DataModel.AudioObjects"
+             xmlns:u="clr-namespace:Auremo.Controls.Utility"
+             xmlns:w="clr-namespace:Auremo.Controls.CustomWidgets"
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="768"
+             d:DataContext="{d:DesignInstance m:DesignTimeWorld, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <m:LanguageTranslationConverter x:Key="Translate"/>
+        <u:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <u:IntToBoolConverter x:Key="IntToBoolConverter"/>
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <w:ListBoxWithDragDrop x:Name="m_ItemList"
+                               Style="{StaticResource PlaylistStyle}"
+                               SelectionMode="Extended"
+                               ItemsSource="{Binding Path=PlaylistInfo.SelectedPlaylistContents}"
+                               HorizontalContentAlignment="Stretch"
+                               PreviewMouseLeftButtonDown="OnPreviewLeftMouseDown"
+                               MouseMove="OnMouseMove"
+                               PreviewMouseLeftButtonUp="OnPreviewLeftMouseUp"
+                               MouseLeave="OnMouseLeave">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type o:PlaylistItem}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="24"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource TextElementStyle}" Grid.Column="0" Text="{Binding Path=TitleOrFile}"/>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="1" Content="{Binding Path=Artist}" Click="OnArtistClicked"/>
+                        <Button Style="{StaticResource LinkElementStyle}" Grid.Column="2" Content="{Binding Path=Album}" Click="OnAlbumClicked"/>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="3" Click="OnPlayItemClicked">
+                            <Path Style="{StaticResource PlayItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementStyle}" Grid.Column="4" Click="OnAddItemClicked">
+                            <Path Style="{StaticResource AddItemGlyph}"/>
+                        </Button>
+                        <Button Style="{StaticResource ToolElementWithDragDropStyle}" Grid.Column="5" Click="OnRemoveItemClicked">
+                            <Path Style="{StaticResource RemoveItemGlyph}"/>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </w:ListBoxWithDragDrop>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.clear-playlist-button'}"
+                    Click="OnClearPlaylistClick"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.add-url-to-playlist-button'}"
+                    Click="OnAddUrlToPlaylistClick"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.delete-items-button'}"
+                    Click="OnDeleteItemsClicked"/>
+            <Button Style="{StaticResource CommandButtonStyle}"
+                    Content="{Binding Converter={StaticResource Translate}, ConverterParameter='playlist-views.load-current-playlist-button'}"
+                    Click="OnLoadToQueueClick"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

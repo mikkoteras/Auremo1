@@ -1,0 +1,111 @@
+TODO
+====
+
+For Auremo 1.0
+--------------
+
+* Controls.Utility shouldn't be under Controls.
+* Implement more configurable options.
+  - Multi-server settings.
+  - Passwords.
+* AlbumArtist is disregarded, but this time it should be straightforward.
+* Playlists don't contain anything except Files.
+  - Is this for real? Is there a difference between adding from queue and somewhere else? File list?
+  - Is this a bug in MPD 21.23 but not in 21.22?
+* Optimization: note that playlists already have real timestamps, better than the global fake one in
+  use now. We don't need to reload the selected playlist because another playlist has changed.
+  - Related to this: overload operator== and != for Playlist, and maybe others. Then we could remove
+    SecureComparePlaylist() or whatever it's called.
+* Query result: add stuff to a saved playlist
+* Merge InterfaceState and ViewHistory
+  - Make it a RestorableDataStore
+  - Consider adding Search into ViewDefinition
+* Separate three different concepts, and put them in writing somewhere:
+  - xaml[.cs], which is for user interaction only,
+  - World datastores, which are data and their properties and accessors,
+    plus MPD query/response logic, and
+  - Connectors, which communicate with MPD and pull data from it, but don't store
+    it themselves. (With time, these should be converted into generic connection
+    wrappers with queuing logic only.)
+  - (And obviously various utilities, parsers, converters and stuff.)
+* Should the command history be infinitely long? It may get inconvenient.
+  - How about about 100? Option?
+* Add something into InterfaceState/ViewHistory to highlight the correct item in
+  NavigationPanel. Also, maybe find a way to make a function call from XAML and
+  take it from there, if possible.
+* Server view: mix ramp, updateDB et al.
+* Style search panel buttons
+* Subscribe to DB updates so that queries can be updated as their results change.
+* Maybe merge ViewHistory into InterfaceState.
+* String query overlay styling.
+  - Can the design time datacontext be made to work?
+* Come up with a consistent exception hierarchy.
+* Combine the LineSource classes for a more comprehensive solution.
+  - Solution 1: Just implement a proper LineSource that reads from
+    a stream one character at a time, like in Auremo 0.x.
+      * Pros: simple, straightforward, known quantity.
+      * Cons: possibly performance, that god damned annoying
+        half-char read, lots of low-level implementation.
+* Make sure everything works properly when not connected.
+* Complete the Activity view.
+* Rename and rearrange translation ids as the current naming scheme works against
+  recycling translations.
+* Complete BackwardsEnglish.json and create an empty translation template.
+* load isn't quite the CommandToAdd for a playlist, necessarily.
+
+ Undecided
+---------
+
+* Take a look at RemoteProperty and maybe don't have the properties refer
+  to each other. There's optimization to be had.
+* Implement a SimpleProperty<> or whatever to reduce boilerplate code.
+* Maybe implement another smart property for Elapsed.
+* A way to switch selected playlists from QueryResult and PlayQueue?
+* Look into MouseCapture.
+* Look into ToggleButton.
+* Consider how many query connections we need. Play queue, queries, playlists...? Just one, infinte?
+* Prune out RoutedEvents.
+* Maybe rename (Sendable, Command, CommandList) to (Command, SimpleCommand, CommandList).
+* Move/recycle play/pause icons in play queue.
+* Add more parsing primitives to Datum.
+* Continue implementing AudiobjectFactory or whatever it's called. Get rid of dictionaries in parsers.
+* Refactor use of "idle" in ServerStatusUpdater to look less recursive.
+* Go through all the code and look for missing translations.
+* Optimize Translator.cs.
+* Test stream reconnecting function exhaustively.
+* See if it's possible to run connectors without the extra thread
+  (which mostly just waits, and complicates matters).
+  - Now, possibly yes, because the idle commands are available, but what about the
+    elapsed counter?
+* ListBoxes:
+  - Get rid of focus style.
+  - Style the ones in developer view.
+* Find a way to deal with strings that are too wide to fit into
+  the grid. Idea: Implement an auto-trimming text field. Use
+  with LinkButton at least.
+* Design nicer scrollbars.
+* Design nicer combo boxes. Or better yet, remove all combo boxed and
+  design nive radio buttons, perhaps in the style of toggle buttons.
+* Get the activity logic out of the xaml.cs. It belongs into its
+  own updater class and only user interaction should stay in
+  xaml.cs.
+* Dedidate a connection to album art. Maybe make it on-demand (somehow).
+* Design general on-demand connections for all!
+
+  - When an item has been added to the queue with the +-icon,
+    signal it somehow.
+* Make volume slider "heftier".
+
+For Auremo 1.1
+--------------
+
+* Introduce an album list between Artist -> Track and Genre -> Track.
+  - Or maybe just group tracks by album and present them like Spotify does.
+* Look into a parameterized highlight color solution.
+
+
+Later
+-----
+
+* Logo -- find someone who can draw.
+* Animations.
